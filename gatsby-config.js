@@ -1,4 +1,3 @@
-// es-lint-disable-line
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
@@ -7,8 +6,7 @@ const firebase_key = {
   project_id: process.env.GATSBY_FIREBASE_PROJECT_ID,
   private_key: process.env.GATSBY_FIREBASE_PRIVATE_KEY,
   client_email: process.env.GATSBY_FIREBASE_CLIENT_EMAIL,
-}
-console.log('what is in process.env?', firebase_key)
+} //
 
 module.exports = {
   siteMetadata: {
@@ -20,7 +18,7 @@ module.exports = {
     {
       resolve: 'gatsby-firesource',
       options: {
-        credential: require('./.env.firebase.json'),
+        credential: firebase_key,
         types: [
           {
             type: 'Interviewers',

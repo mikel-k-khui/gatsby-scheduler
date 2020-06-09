@@ -1,4 +1,2 @@
-
-./gatsby-*.js
+gatsby-config.js
 .gitignore
-.
