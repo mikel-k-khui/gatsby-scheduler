@@ -5,8 +5,33 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    {
+      resolve: 'gatsby-firesource',
+      options: {
+        credential: require('./firebase.json'),
+        types: [
+          {
+            type: 'Book',
+            collection: 'books',
+            map: doc => ({
+              title: doc.title,
+              isbn: doc.isbn,
+              author___NODE: doc.author.id,
+            }),
+          },
+          {
+            type: 'Author',
+            collection: 'authors',
+            map: doc => ({
+              name: doc.name,
+              country: doc.country,
+              books___NODE: doc.books.map(book => book.id),
+            }),
+          },
+        ],
+      },
+    },
     `gatsby-plugin-netlify`,
-    'gatsby-plugin-typescript',
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -15,7 +40,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -29,6 +53,8 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    'gatsby-plugin-typescript',
+    `gatsby-transformer-sharp`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
