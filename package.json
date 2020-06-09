@@ -72,7 +72,7 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
-      "eslint --ignore-pattern '!.eslintrc.js' --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx --fix",
+      "eslint --ignore-pattern '!.eslintrc.js' --fix",
       "git add"
     ]
   }

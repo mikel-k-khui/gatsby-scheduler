@@ -1,12 +1,19 @@
-import dotenv from 'dotenv'
-dotenv.config({
+// es-lint-disable-line
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+const firebase_key = {
+  project_id: process.env.GATSBY_FIREBASE_PROJECT_ID,
+  private_key: process.env.GATSBY_FIREBASE_PRIVATE_KEY,
+  client_email: process.env.GATSBY_FIREBASE_CLIENT_EMAIL,
+}
+console.log('what is in process.env?', firebase_key)
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Project re-do: apply new languages and tech stack to improve our solution to a previous project`,
+    description: `Apply Gatsby (React, GraphQL), Typescript, and Firebase`,
     author: `@gatsbyjs`,
   },
   plugins: [

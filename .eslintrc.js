@@ -27,6 +27,7 @@ module.exports = {
     //     tagName: `graphql`,
     //   },
     // ],
+    '@typescript-eslint/ban-ts-comment': 'warn',
     'react/prop-types': 'warn',
     'react/no-unescaped-entities': 'warn',
     'react/jsx-pascal-case': `off`, // Prevents errors with Theme-UI and Styled component
