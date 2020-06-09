@@ -27,8 +27,8 @@ module.exports = {
     //     tagName: `graphql`,
     //   },
     // ],
-    'react/prop-types': 0,
-    'react/no-unescaped-entities': 0,
+    'react/prop-types': 'warn',
+    'react/no-unescaped-entities': 'warn',
     'react/jsx-pascal-case': `off`, // Prevents errors with Theme-UI and Styled component
     // https://github.com/evcohen/eslint-plugin-jsx-a11y/tree/master/docs/rules
     'jsx-a11y/accessible-emoji': `warn`,
