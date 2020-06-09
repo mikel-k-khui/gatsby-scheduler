@@ -1,3 +1,8 @@
+import dotenv from 'dotenv'
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -8,24 +13,23 @@ module.exports = {
     {
       resolve: 'gatsby-firesource',
       options: {
-        credential: require('./firebase.json'),
+        credential: require('./.env.firebase.json'),
         types: [
           {
-            type: 'Book',
-            collection: 'books',
+            type: 'Interviewers',
+            collection: 'interviewers',
             map: doc => ({
-              title: doc.title,
-              isbn: doc.isbn,
-              author___NODE: doc.author.id,
+              displayName: doc.displayName,
+              id: doc.id,
+              student___NODE: doc.testing.id, // links gatsby object
             }),
           },
           {
-            type: 'Author',
-            collection: 'authors',
+            type: 'Students',
+            collection: 'students',
             map: doc => ({
-              name: doc.name,
-              country: doc.country,
-              books___NODE: doc.books.map(book => book.id),
+              displayName: doc.displayName,
+              id: doc.id,
             }),
           },
         ],
